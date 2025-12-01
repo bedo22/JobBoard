@@ -1,7 +1,0 @@
-SHIFT+ENTER = new line
-↑ = edit last message
-only the code → clean block
-@edit file → edit it
-@create file → make new file
-@diff → see changes
-@undo → revert last edit
