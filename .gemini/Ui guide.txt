@@ -1,0 +1,24 @@
+Most common patterns you’ll copy-paste forever:
+
+hidden md:block          → hide on mobile, show on desktop
+block md:hidden          → show on mobile, hide on desktop
+flex-col md:flex-row     → stack on mobile, side-by-side on desktop
+text-2xl md:text-4xl     → bigger text on desktop
+p-4 md:p-8               → more padding on bigger screens
+grid-cols-1 md:grid-cols-2 lg:grid-cols-3   → responsive grid
+
+Container rule (use this on every page):
+
+<div className="container mx-auto px-4 lg:px-8">
+→ automatically gives perfect horizontal padding + max-width.
+
+Never guess — just check in devtools:
+
+Press F12 → click the phone/tablet icon → drag the screen width → you instantly see which breakpoint is active
+
+The 4 free places pros actually use in 2025 (in order of speed):
+Place,How many free examples?,Best for
+https://ui.shadcn.com,~50 components + 10 examples,"Fastest copy-paste, perfect code"
+https://tailwindui.com/components,200+ (some free),"Beautiful, but you have to type it"
+https://daisyui.com/components,100% free,Good if you want no extra setup
+https://magicui.design,30+ animated components,When you want fancy effects

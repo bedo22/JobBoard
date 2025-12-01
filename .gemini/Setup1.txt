@@ -1,0 +1,392 @@
+---
+
+title: Vite
+
+description: Install and configure shadcn/ui for Vite.
+
+---
+
+
+
+<Steps>
+
+
+
+\### Create project
+
+
+
+Start by creating a new React project using `vite`. Select the \*\*React + TypeScript\*\* template:
+
+
+
+```bash
+
+npm create vite@latest
+
+```
+
+
+
+\### Add Tailwind CSS
+
+
+
+```bash
+
+npm install tailwindcss @tailwindcss/vite
+
+```
+
+
+
+Replace everything in `src/index.css` with the following:
+
+
+
+```css title="src/index.css"
+
+@import "tailwindcss";
+
+```
+
+
+
+\### Edit tsconfig.json file
+
+
+
+The current version of Vite splits TypeScript configuration into three files, two of which need to be edited.
+
+Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the `tsconfig.json` and
+
+`tsconfig.app.json` files:
+
+
+
+```ts title="tsconfig.json" {11-16} showLineNumbers
+
+{
+
+&nbsp; "files": \[],
+
+&nbsp; "references": \[
+
+&nbsp;   {
+
+&nbsp;     "path": "./tsconfig.app.json"
+
+&nbsp;   },
+
+&nbsp;   {
+
+&nbsp;     "path": "./tsconfig.node.json"
+
+&nbsp;   }
+
+&nbsp; ],
+
+&nbsp; "compilerOptions": {
+
+&nbsp;   "baseUrl": ".",
+
+&nbsp;   "paths": {
+
+&nbsp;     "@/\*": \["./src/\*"]
+
+&nbsp;   }
+
+&nbsp; }
+
+}
+
+```
+
+
+
+\### Edit tsconfig.app.json file
+
+
+
+Add the following code to the `tsconfig.app.json` file to resolve paths, for your IDE:
+
+
+
+```ts title="tsconfig.app.json" {4-9} showLineNumbers
+
+{
+
+&nbsp; "compilerOptions": {
+
+&nbsp;   // ...
+
+&nbsp;   "baseUrl": ".",
+
+&nbsp;   "paths": {
+
+&nbsp;     "@/\*": \[
+
+&nbsp;       "./src/\*"
+
+&nbsp;     ]
+
+&nbsp;   }
+
+&nbsp;   // ...
+
+&nbsp; }
+
+}
+
+```
+
+
+
+\### Update vite.config.ts
+
+
+
+Add the following code to the vite.config.ts so your app can resolve paths without error:
+
+
+
+```bash
+
+npm install -D @types/node
+
+```
+
+
+
+```typescript title="vite.config.ts" showLineNumbers {1,2,8-13}
+
+import path from "path"
+
+import tailwindcss from "@tailwindcss/vite"
+
+import react from "@vitejs/plugin-react"
+
+import { defineConfig } from "vite"
+
+
+
+// https://vite.dev/config/
+
+export default defineConfig({
+
+&nbsp; plugins: \[react(), tailwindcss()],
+
+&nbsp; resolve: {
+
+&nbsp;   alias: {
+
+&nbsp;     "@": path.resolve(\_\_dirname, "./src"),
+
+&nbsp;   },
+
+&nbsp; },
+
+})
+
+```
+
+
+
+\### Run the CLI
+
+
+
+Run the `shadcn` init command to setup your project:
+
+
+
+```bash
+
+npx shadcn@latest init
+
+```
+
+
+
+You will be asked a few questions to configure `components.json`.
+
+
+
+```txt
+
+Which color would you like to use as base color? › Neutral
+
+```
+
+
+
+\### Add Components
+
+
+
+You can now start adding components to your project.
+
+
+
+```bash
+
+npx shadcn@latest add button card input textarea select badge avatar dialog sheet dropdown-menu tabs sonner separator skeleton checkbox radio-group label navigation-menu field
+
+```
+
+
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+
+
+```tsx showLineNumbers title="src/App.tsx"
+
+import { Button } from "@/components/ui/button"
+
+
+
+function App() {
+
+&nbsp; return (
+
+&nbsp;   <div className="flex min-h-svh flex-col items-center justify-center">
+
+&nbsp;     <Button>Click me</Button>
+
+&nbsp;   </div>
+
+&nbsp; )
+
+}
+
+
+
+export default App
+
+```
+
+
+
+
+
+</Steps>
+
+
+
+npm install sonner react-router-dom @supabase/supabase-js zod react-hook-form @hookform/resolvers
+
+
+
+🧩 Step 1 — Install Supabase client
+
+
+
+Run this in your project terminal:
+
+
+
+npm install @supabase/supabase-js
+
+
+
+
+
+This gives your frontend the official Supabase SDK so it can talk to your database securely using your anon key.
+
+
+
+🧱 Step 2 — Create the client file
+
+
+
+Create a new file:
+
+📁 src/lib/supabaseClient.ts
+
+
+
+Inside it, write:
+
+
+
+// src/lib/supabaseClient.ts
+
+import { createClient } from "@supabase/supabase-js"
+
+
+
+const supabaseUrl = import.meta.env.VITE\_SUPABASE\_URL!
+
+const supabaseAnonKey = import.meta.env.VITE\_SUPABASE\_ANON\_KEY!
+
+
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+
+
+
+
+🧠 Why this pattern:
+
+
+
+Keeps credentials safe inside .env (instead of hardcoding them)
+
+
+
+Makes Supabase reusable anywhere in your code by just importing supabase
+
+
+
+🔐 Step 3 — Add your environment variables
+
+
+
+In the root of your project, create a file named .env and add:
+
+
+
+VITE\_SUPABASE\_URL=https://YOUR\_PROJECT\_URL.supabase.co
+
+VITE\_SUPABASE\_ANON\_KEY=YOUR\_ANON\_KEY
+
+
+
+
+
+Then restart your dev server after saving.
+
+npm install supabase --save-dev
+
+npx supabase login
+
+My personal “must-install right now” list for your Job Board (copy-paste)
+
+npx supabase gen types typescript --project-id iamtndznwozwlmgtqqqx > src/types/supabase.ts
+
+Bash# Speed + DX
+
+npm install clsx tailwind-merge
+
+npm install -D @total-typescript/ts-reset msw
+
+
+
+\# Optional but life-changing (I use these in every project)
+
+npm install @tanstack/react-query
+
+npm install drizzle-orm drizzle-zod   # if you want god-mode types
+
+Bonus: The 3 files that will save you 20+ hours this week
+
+
+
+src/lib/utils.ts → cn() + formatDate() + truncate()
+
+src/lib/env.ts → Zod-validated env variables
+
+src/hooks/use-supabase.ts → typed client + auth state in one hook
+
