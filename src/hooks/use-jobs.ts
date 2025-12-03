@@ -80,9 +80,19 @@ export function useJobs(filters: Filters = {
   const loadMore = () => !loading && hasMore && fetchJobs( false)
   const refetch = () => fetchJobs(true)
 
+  // Instant filtering for checkboxes and toggles (better UX for click actions)
   useEffect(() => {
     refetch()
-  }, [filters.search, filters.location, JSON.stringify(filters.type), filters.remote, filters.hybrid])
+  }, [JSON.stringify(filters.type), filters.remote, filters.hybrid])
+
+  // Debounced filtering for text inputs (wait until user stops typing)
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      refetch()
+    }, 500) // Wait 500ms after user stops typing
+
+    return () => clearTimeout(delayDebounce)
+  }, [filters.search, filters.location])
 
   return { jobs, loading, hasMore, loadMore, refetch }
 }

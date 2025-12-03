@@ -68,6 +68,6 @@ export function useAuth() {
     ...state,
     signOut,
     isEmployer: state.profile?.role === 'employer',
-    isSeeker: !state.profile || state.profile?.role === 'seeker',
+    isSeeker: state.profile?.role === 'seeker',
   }
 }

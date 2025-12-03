@@ -32,7 +32,7 @@ export function ApplyDialog({ job }: ApplyDialogProps) {
 
     // 1. Upload resume to Supabase Storage
     const fileExt = resumeFile.name.split('.').pop()
-    const fileName = `${user?.id}-${job.id}-${Date.now()}.${fileExt}`
+    const fileName = `${user?.id}/${job.id}-${Date.now()}.${fileExt}` 
 
     const { error: uploadError } = await supabase.storage
       .from('resumes')
