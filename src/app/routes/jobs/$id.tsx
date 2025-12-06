@@ -190,13 +190,27 @@ export default function JobDetailPage() {
         <div className="lg:col-span-1">
           <Card className="sticky top-24">
             <CardContent className="pt-6">
-              {alreadyApplied ? (
-                <div className="text-center py-8">
-                  <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-                  <p className="text-lg font-semibold">You have already applied!</p>
-                </div>
+              {user ? (
+                alreadyApplied ? (
+                  <div className="text-center py-8">
+                    <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+                    <p className="text-lg font-semibold">You have already applied!</p>
+                  </div>
+                ) : (
+                  <ApplyDialog job={job} />
+                )
               ) : (
-                <ApplyDialog job={job} />
+                <div className="space-y-4">
+                  <Button asChild size="lg" className="w-full">
+                    <Link to="/login">Login to Apply</Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="w-full">
+                    <Link to="/signup">Sign Up to Apply</Link>
+                  </Button>
+                  <p className="text-center text-sm text-muted-foreground">
+                    You need an account to apply
+                  </p>
+                </div>
               )}
             </CardContent>
           </Card>
