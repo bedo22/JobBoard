@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { ArrowLeft, MapPin, Clock, DollarSign, Building2, Globe, Briefcase, Users, CheckCircle } from "lucide-react"
+import { ArrowLeft, MapPin, Clock, DollarSign, Briefcase, CheckCircle } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 import { ApplyDialog } from "@/components/apply-dialog" // we'll create this next
 import { formatDistanceToNow } from "date-fns"

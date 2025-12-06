@@ -2,12 +2,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Briefcase, LogIn, UserPlus, LogOut, LayoutDashboard } from "lucide-react"
+import { Menu, Briefcase, LogOut, LayoutDashboard } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 import { toast } from "sonner"
 
 export function Navbar() {
-  const { user, profile, signOut, loading } = useAuth()
+  const { user, signOut, loading } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
 

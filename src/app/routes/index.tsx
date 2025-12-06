@@ -1,7 +1,7 @@
 // src/app/routes/index.tsx
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
-import { ArrowRight, Briefcase, Users, Building2, CheckCircle } from "lucide-react"
+import { ArrowRight, Briefcase, Users, CheckCircle } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 
 export default function Index() {
@@ -17,7 +17,7 @@ export default function Index() {
               Find Your Dream Job <span className="text-primary">Today</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-10">
-              Join thousands of professionals who found their perfect role through JobBoard. 
+              Join thousands of professionals who found their perfect role through JobBoard.
               New jobs posted every minute.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -25,7 +25,7 @@ export default function Index() {
                 <Button size="lg" className="text-lg px-8">
                   Browse Jobs <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </Link> 
+              </Link>
               {user || isEmployer ? (
                 <Link to="/jobs/post">
                   <Button size="lg" variant="outline" className="text-lg px-8">

@@ -1,7 +1,7 @@
 // src/hooks/use-jobs.ts
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
-import type { JobType, LocationType } from '@/types/app'
+import type { JobType } from '@/types/app'
 
 import type { Job } from "@/types/app"
 
@@ -77,7 +77,7 @@ export function useJobs(filters: Filters = {
     setLoading(false)
   }
 
-  const loadMore = () => !loading && hasMore && fetchJobs( false)
+  const loadMore = () => !loading && hasMore && fetchJobs(false)
   const refetch = () => fetchJobs(true)
 
   // Instant filtering for checkboxes and toggles (better UX for click actions)

@@ -32,7 +32,7 @@ export default function PostJobPage() {
   const { profile, isEmployer } = useAuth()
   const navigate = useNavigate()
 
-  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<JobForm>({
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm<JobForm>({
     resolver: zodResolver(jobSchema),
     defaultValues: {
       company_name: profile?.company_name || "",
