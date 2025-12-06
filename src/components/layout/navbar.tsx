@@ -19,8 +19,7 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Find Jobs", path: "/jobs" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: "Pricing", path: "/pricing" },
   ]
 
   return (
@@ -38,9 +37,8 @@ export function Navbar() {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                location.pathname === link.path ? "text-primary" : "text-muted-foreground"
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-muted-foreground"
+                }`}
             >
               {link.name}
             </Link>

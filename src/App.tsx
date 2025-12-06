@@ -14,7 +14,8 @@ const Login = lazy(() => import("./app/routes/auth/login"));
 const Signup = lazy(() => import("./app/routes/auth/signup"));
 const Dashboard = lazy(() => import("./app/routes/dashboard/index"));
 const Applicants = lazy(() => import("./app/routes/dashboard/applicants/$id"));
-const PostJob = lazy(() => import("./app/routes/jobs/Post")); 
+const Pricing = lazy(() => import("./app/routes/pricing"));
+const PostJob = lazy(() => import("./app/routes/jobs/Post"));
 const NotFound = lazy(() => import("./app/routes/404"));
 
 const router = createBrowserRouter([
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "dashboard", element: <Dashboard /> },
       { path: "dashboard/applicants/:id", element: <Applicants /> },
+      { path: "pricing", element: <Pricing /> },
       { path: "*", element: <NotFound /> },
     ],
   },

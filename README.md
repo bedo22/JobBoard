@@ -316,25 +316,16 @@ npm run lint
 
 ## 🌐 Deployment
 
-### Deploy to Vercel (Recommended)
+### Deploy to cloudflare pages (Recommended)
 
 1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com)
+2. Go to Cloudflare Pages dashboard
 3. Import your repository
 4. Add environment variables:
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_ANON_KEY`
 5. Deploy! 🚀
 
-### Deploy to Netlify
-
-1. Push your code to GitHub
-2. Go to [netlify.com](https://netlify.com)
-3. Import your repository
-4. Build command: `npm run build`
-5. Publish directory: `dist`
-6. Add environment variables
-7. Deploy! 🚀
 
 ---
 

@@ -11,7 +11,7 @@ import { format } from "date-fns"
 import { toast } from "sonner"
 import { useAuth } from "@/hooks/use-auth"
 
-// Clean type — treat it as object for simplicity (we'll transform data to match this)
+// Clean type using profiles instead of auth_users
 type Application = {
   id: string
   seeker_id: string
@@ -19,12 +19,9 @@ type Application = {
   resume_url: string
   status: 'pending' | 'reviewed' | 'rejected' | 'accepted'
   applied_at: string
-  auth_users: {  // ← Single object (we force this via transformation)
+  profiles: {
+    full_name: string
     email: string
-    raw_user_meta_data: {
-      full_name?: string
-      role?: string
-    }
   }
 }
 
@@ -63,9 +60,9 @@ export default function ApplicantsPage() {
           resume_url,
           status,
           applied_at,
-          auth_users:seeker_id!inner (
-            email,
-            raw_user_meta_data
+          profiles:seeker_id!inner (
+            full_name,
+            email
           )
         `)
         .eq('job_id', id)
@@ -77,17 +74,14 @@ export default function ApplicantsPage() {
         setLoading(false)
         return
       }
-
-      // 3. THE MAGIC TRANSFORMATION (Gemini's fix — handles array vs object)
-      // Supabase might return auth_users as array [{}] even for 1:1
-      // We flatten it to object {} to match our clean type
-      // This is safe: if array, take [0]; if already object, keep it
-      const formattedData = (data || []).map(app => ({
+      
+      // Transform: Supabase types think profiles is array, but !inner returns single object
+      const transformedData = (data || []).map(app => ({
         ...app,
-        auth_users: Array.isArray(app.auth_users) ? app.auth_users[0] : app.auth_users
-      })) as Application[]  // ← Cast to our clean type — TypeScript happy now
-
-      setApplications(formattedData)
+        profiles: Array.isArray(app.profiles) ? app.profiles[0] : app.profiles
+      })) as Application[]
+      
+      setApplications(transformedData)
       setLoading(false)
     }
 
@@ -143,10 +137,8 @@ export default function ApplicantsPage() {
       ) : (
         <div className="grid gap-6">
           {applications.map((app) => {
-            // ← CLEAN JSX: No [0] here — we handled it in transformation
-            const user = app.auth_users
-            const fullName = user.raw_user_meta_data?.full_name || "Unknown User"
-            const email = user.email
+            const fullName = app.profiles.full_name || "Unknown User"
+            const email = app.profiles.email
 
             return (
               <Card key={app.id}>
@@ -177,7 +169,11 @@ export default function ApplicantsPage() {
 
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <Button asChild>
-                      <a href={app.resume_url} target="_blank" rel="noopener noreferrer">
+                      <a 
+                        href={supabase.storage.from('resumes').getPublicUrl(app.resume_url).data.publicUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
                         <Download className="mr-2 h-4 w-4" /> Download Resume
                       </a>
                     </Button>
