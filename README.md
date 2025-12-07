@@ -2,10 +2,8 @@
 
 A modern, full-stack job board application built with React 19, TypeScript, and Supabase. Connects employers with job seekers through an intuitive interface with powerful features.
 
-![React](https://img.shields.io/badge/React-19.2-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
-![Supabase](https://img.shields.io/badge/Supabase-2.84-green)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-06B6D4)
+Live Demo -> [https://notes-app-8wk.pages.dev/](https://jobboard-9ar.pages.dev/)
+<img width="1618" height="903" alt="Screenshot 2025-12-07 065945" src="https://github.com/user-attachments/assets/668b757d-79dc-4c2c-9721-4d6aed6abcb9" />
 
 ---
 
@@ -32,7 +30,15 @@ A modern, full-stack job board application built with React 19, TypeScript, and 
 - 🛡️ **Row Level Security** - Database-level access control
 
 ---
+## ScreenShots
+<img width="1634" height="847" alt="Screenshot 2025-12-07 065546" src="https://github.com/user-attachments/assets/425daa4c-6ab8-4c79-873d-5f54e793a873" />
+<img width="1637" height="756" alt="Screenshot 2025-12-07 065609" src="https://github.com/user-attachments/assets/7bc93b35-747e-4f5b-a14b-a7138cede6b1" />
+<img width="1574" height="739" alt="Screenshot 2025-12-07 065622" src="https://github.com/user-attachments/assets/e3694340-d537-4154-a91e-bb25a5e13758" />
+<img width="1735" height="640" alt="Screenshot 2025-12-07 065633" src="https://github.com/user-attachments/assets/2a9e0294-f1b9-464c-8a6a-d45b5f165b40" />
+<img width="1726" height="846" alt="Screenshot 2025-12-07 065748" src="https://github.com/user-attachments/assets/ec65c7b7-453c-4227-b215-e495f7a807a0" />
+<img width="1618" height="903" alt="Screenshot 2025-12-07 065945" src="https://github.com/user-attachments/assets/c27322ce-f7cc-4de1-9dd2-edcbff7e958d" />
 
+---
 ## 🚀 Tech Stack
 
 ### Frontend
