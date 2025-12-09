@@ -2,7 +2,7 @@
 
 A modern, full-stack job board application built with React 19, TypeScript, and Supabase. Connects employers with job seekers through an intuitive interface with powerful features.
 
-Live Demo -> [https://notes-app-8wk.pages.dev/](https://jobboard-9ar.pages.dev/)
+Live Demo -> (https://jobboard-9ar.pages.dev/)
 <img width="1649" height="879" alt="Screenshot 2025-12-07 065526" src="https://github.com/user-attachments/assets/ce458cff-2979-4809-a569-e3c193883e0f" />
 
 ---
