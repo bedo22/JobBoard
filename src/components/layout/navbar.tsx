@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, Briefcase, LogOut, LayoutDashboard } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 import { toast } from "sonner"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 export function Navbar() {
   const { user, signOut, loading } = useAuth()
@@ -47,6 +48,9 @@ export function Navbar() {
 
         {/* Auth Buttons / Mobile Menu */}
         <div className="flex items-center gap-3">
+          {/* Theme Toggle - Always visible */}
+          <ThemeToggle />
+
           {!loading && (
             <>
               {user ? (
